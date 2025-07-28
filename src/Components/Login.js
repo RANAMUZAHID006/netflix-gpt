@@ -14,8 +14,8 @@ import { BG_URL, USER_AVTAR } from "../utils/constant";
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-
   const dispatch = useDispatch();
+
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
@@ -25,6 +25,7 @@ const Login = () => {
     const message = checkValidData(email.current.value, password.current.value);
     setErrorMessage(message);
     if (message) return;
+
     if (!isSignInForm) {
       // SignUp logic
       createUserWithEmailAndPassword(
@@ -85,14 +86,14 @@ const Login = () => {
   return (
     <>
       <Header />
-      <div className="absolute">
+      <div className="fixed">
         <img src={BG_URL} alt="bg-img" />
       </div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className=" w-3/12 absolute p-12 bg-black bg-opacity-70 my-36 mx-auto right-0 left-0 text-white rounded"
+        className="w-full md:w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80"
       >
         <h1 className="font-bold text-3xl py-4">
           {isSignInForm ? "Sign In" : "Sign up"}
